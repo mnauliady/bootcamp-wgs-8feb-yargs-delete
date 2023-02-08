@@ -32,7 +32,7 @@ const input = (data) => {
 // fungsi untuk menambahkan data ke dalam file json
 const saveContact = (name, email, mobile) => {
   const myObj = { name, email, mobile };
-  const file = fs.readFileSync("./data/contacts.json", "utf-8");
+  const file = fs.readFileSync(pathFile, "utf-8");
   const myData = JSON.parse(file);
 
   // cek data nama duplikat
@@ -62,12 +62,12 @@ const saveContact = (name, email, mobile) => {
   // push data ke dalam file
   myData.push(myObj);
   const content = JSON.stringify(myData);
-  fs.writeFileSync("./data/contacts.json", content);
+  fs.writeFileSync(pathFile, content);
 };
 
 // fungsi menampilkan detail dari contact
 const detail = (name) => {
-  const file = fs.readFileSync("./data/contacts.json", "utf-8");
+  const file = fs.readFileSync(pathFile, "utf-8");
   const myData = JSON.parse(file);
 
   // mencari/mengecek nama yang diinput ada dalam file json
@@ -88,7 +88,7 @@ const detail = (name) => {
 
 // menampilkan seluruh data
 const list = () => {
-  const file = fs.readFileSync("./data/contacts.json", "utf-8");
+  const file = fs.readFileSync(pathFile, "utf-8");
   const myData = JSON.parse(file);
 
   // variabel iterasi untuk nomor
@@ -103,7 +103,7 @@ const list = () => {
 
 // menghapus data contact
 const deleteContact = (name) => {
-  const file = fs.readFileSync("./data/contacts.json", "utf-8");
+  const file = fs.readFileSync(pathFile, "utf-8");
   const myData = JSON.parse(file);
 
   // cek apakah ada(nama) data pada file
@@ -118,7 +118,7 @@ const deleteContact = (name) => {
 
     // timpa data dengan array yang baru yang telah dihapus
     const content = JSON.stringify(cek);
-    fs.writeFileSync("./data/contacts.json", content);
+    fs.writeFileSync(pathFile, content);
   }
 };
 
